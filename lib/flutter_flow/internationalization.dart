@@ -478,7 +478,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Name Transaction ',
       'pt': 'Valor \$',
     },
-    'dz024ew3': {
+    '8chbbm3h': {
       'en': 'Debito',
       'pt': '',
     },
