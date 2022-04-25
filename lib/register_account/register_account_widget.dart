@@ -5,7 +5,6 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../login_page/login_page_widget.dart';
-import '../main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -71,9 +70,9 @@ class _RegisterAccountWidgetState extends State<RegisterAccountWidget> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Image.asset(
-                              'assets/images/finWallet_logo_landscape.png',
-                              width: 170,
-                              height: 60,
+                              'assets/images/finalll.png',
+                              width: 320,
+                              height: 90,
                               fit: BoxFit.fitWidth,
                             ),
                           ],
@@ -450,53 +449,6 @@ class _RegisterAccountWidgetState extends State<RegisterAccountWidget> {
                                 ],
                               ),
                             ],
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            final user = await signInAnonymously(context);
-                            if (user == null) {
-                              return;
-                            }
-
-                            final budgetListCreateData =
-                                createBudgetListRecordData(
-                              budgetUser: currentUserReference,
-                            );
-                            await BudgetListRecord.collection
-                                .doc()
-                                .set(budgetListCreateData);
-                            await Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    NavBarPage(initialPage: 'homePage'),
-                              ),
-                              (r) => false,
-                            );
-                          },
-                          text: FFLocalizations.of(context).getText(
-                            'c6q19wp6' /* Continue as Guest */,
-                          ),
-                          options: FFButtonOptions(
-                            width: 230,
-                            height: 50,
-                            color: FlutterFlowTheme.of(context).background,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .subtitle2
-                                .override(
-                                  fontFamily: 'Lexend Deca',
-                                  color: FlutterFlowTheme.of(context).textColor,
-                                ),
-                            elevation: 3,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1,
-                            ),
-                            borderRadius: 30,
                           ),
                         ),
                       ),

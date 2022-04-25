@@ -139,10 +139,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Already have an account?',
       'pt': 'já tem uma conta?',
     },
-    'c6q19wp6': {
-      'en': 'Continue as Guest',
-      'pt': 'Continuar como convidado',
-    },
     '4k990vnz': {
       'en': 'Home',
       'pt': 'Casa',
@@ -478,7 +474,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Name Transaction ',
       'pt': 'Valor \$',
     },
-    '8chbbm3h': {
+    '1lqyttyg': {
       'en': 'Debito',
       'pt': '',
     },
