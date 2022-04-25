@@ -700,6 +700,14 @@ class _TransferFundsWidgetState extends State<TransferFundsWidget>
                         await TransactionsRecord.collection
                             .doc()
                             .set(transactionsCreateData);
+
+                        final creditoDetalheCreateData =
+                            createCreditoDetalheRecordData(
+                          vezes: int.parse(textController3.text),
+                        );
+                        await CreditoDetalheRecord.collection
+                            .doc()
+                            .set(creditoDetalheCreateData);
                         await Navigator.push(
                           context,
                           PageTransition(
