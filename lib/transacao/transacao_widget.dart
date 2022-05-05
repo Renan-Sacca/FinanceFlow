@@ -15,14 +15,14 @@ import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class TransferFundsWidget extends StatefulWidget {
-  const TransferFundsWidget({Key key}) : super(key: key);
+class TransacaoWidget extends StatefulWidget {
+  const TransacaoWidget({Key key}) : super(key: key);
 
   @override
-  _TransferFundsWidgetState createState() => _TransferFundsWidgetState();
+  _TransacaoWidgetState createState() => _TransacaoWidgetState();
 }
 
-class _TransferFundsWidgetState extends State<TransferFundsWidget>
+class _TransacaoWidgetState extends State<TransacaoWidget>
     with TickerProviderStateMixin {
   DateTime datePicked;
   String dropDownValue1;
@@ -383,7 +383,7 @@ class _TransferFundsWidgetState extends State<TransferFundsWidget>
                                 child: SizedBox(
                                   width: 40,
                                   height: 40,
-                                  child: SpinKitPumpingHeart(
+                                  child: SpinKitDoubleBounce(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryColor,
                                     size: 40,
@@ -433,7 +433,6 @@ class _TransferFundsWidgetState extends State<TransferFundsWidget>
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                         child: FlutterFlowDropDown(
-                          initialOption: dropDownValue2 ??= 'Debito',
                           options: [
                             FFLocalizations.of(context).getText(
                               '864b1mss' /* Debito */,
@@ -485,7 +484,7 @@ class _TransferFundsWidgetState extends State<TransferFundsWidget>
                                 child: SizedBox(
                                   width: 40,
                                   height: 40,
-                                  child: SpinKitPumpingHeart(
+                                  child: SpinKitDoubleBounce(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryColor,
                                     size: 40,
@@ -700,21 +699,19 @@ class _TransferFundsWidgetState extends State<TransferFundsWidget>
                         await TransactionsRecord.collection
                             .doc()
                             .set(transactionsCreateData);
-
-                        final creditoDetalheCreateData =
-                            createCreditoDetalheRecordData(
-                          vezes: int.parse(textController3.text),
-                        );
-                        await CreditoDetalheRecord.collection
-                            .doc()
-                            .set(creditoDetalheCreateData);
+                        if ((dropDownValue2) == 'Credito') {
+                          final creditoDetalheCreateData =
+                              createCreditoDetalheRecordData(
+                            vezes: int.parse(textController3.text),
+                          );
+                          await CreditoDetalheRecord.collection
+                              .doc()
+                              .set(creditoDetalheCreateData);
+                        }
                         await Navigator.push(
                           context,
-                          PageTransition(
-                            type: PageTransitionType.bottomToTop,
-                            duration: Duration(milliseconds: 350),
-                            reverseDuration: Duration(milliseconds: 350),
-                            child: TransferCompleteWidget(),
+                          MaterialPageRoute(
+                            builder: (context) => TransferCompleteWidget(),
                           ),
                         );
                       },

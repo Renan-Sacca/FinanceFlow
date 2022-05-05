@@ -17,11 +17,6 @@ class CreateBudgetBeginWidget extends StatefulWidget {
 
 class _CreateBudgetBeginWidgetState extends State<CreateBudgetBeginWidget>
     with TickerProviderStateMixin {
-  TextEditingController budgetNameController;
-  TextEditingController textController1;
-  TextEditingController textController3;
-  final formKey = GlobalKey<FormState>();
-  final scaffoldKey = GlobalKey<ScaffoldState>();
   final animationsMap = {
     'textFieldOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
@@ -52,6 +47,11 @@ class _CreateBudgetBeginWidgetState extends State<CreateBudgetBeginWidget>
       ),
     ),
   };
+  final formKey = GlobalKey<FormState>();
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+  TextEditingController budgetNameController;
+  TextEditingController textController1;
+  TextEditingController textController3;
 
   @override
   void initState() {
@@ -197,7 +197,7 @@ class _CreateBudgetBeginWidgetState extends State<CreateBudgetBeginWidget>
                             style: FlutterFlowTheme.of(context).title1,
                             textAlign: TextAlign.center,
                             validator: (val) {
-                              if (val.isEmpty) {
+                              if (val == null || val.isEmpty) {
                                 return FFLocalizations.of(context).getText(
                                   '1vc2s2ub' /* Please enter an amount */,
                                 );

@@ -1,13 +1,18 @@
 import '../auth/auth_util.dart';
+import '../backend/api_requests/api_calls.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../m_y_banks/m_y_banks_widget.dart';
-import '../transfer_funds/transfer_funds_widget.dart';
+import '../list_news/list_news_widget.dart';
+import '../my_banks/my_banks_widget.dart';
+import '../payment_details/payment_details_widget.dart';
+import '../transacao/transacao_widget.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePageWidget extends StatefulWidget {
@@ -54,6 +59,13 @@ class _HomePageWidgetState extends State<HomePageWidget>
   @override
   void initState() {
     super.initState();
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await CalcularsaldoCall.call(
+        idUsuario: currentUserUid,
+      );
+    });
+
     startPageLoadAnimations(
       animationsMap.values
           .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
@@ -189,9 +201,9 @@ class _HomePageWidgetState extends State<HomePageWidget>
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Image.asset(
-                                  'assets/images/visa@3x.png',
-                                  width: 44,
-                                  height: 14,
+                                  'assets/images/final.png',
+                                  width: 80,
+                                  height: 20,
                                   fit: BoxFit.cover,
                                 ),
                               ],
@@ -242,40 +254,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                               ],
                             ),
                           ),
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  FFLocalizations.of(context).getText(
-                                    'jnhvqopg' /* **** 0149 */,
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyText1
-                                      .override(
-                                        fontFamily: 'Roboto Mono',
-                                        color: FlutterFlowTheme.of(context)
-                                            .textColor,
-                                      ),
-                                ),
-                                Text(
-                                  FFLocalizations.of(context).getText(
-                                    'uzibwmm0' /* 05/25 */,
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyText1
-                                      .override(
-                                        fontFamily: 'Roboto Mono',
-                                        color: FlutterFlowTheme.of(context)
-                                            .textColor,
-                                      ),
-                                ),
-                              ],
-                            ),
-                          ),
                         ],
                       ),
                     ),
@@ -297,6 +275,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   ),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(20, 16, 20, 0),
@@ -334,7 +313,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       duration: Duration(milliseconds: 330),
                                       reverseDuration:
                                           Duration(milliseconds: 330),
-                                      child: TransferFundsWidget(),
+                                      child: TransacaoWidget(),
                                     ),
                                   );
                                 },
@@ -370,28 +349,38 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 color: FlutterFlowTheme.of(context).background,
                                 borderRadius: BorderRadius.circular(8),
                               ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.stacked_line_chart_rounded,
-                                    color:
-                                        FlutterFlowTheme.of(context).textColor,
-                                    size: 40,
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 8, 0, 0),
-                                    child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        '2e07yq94' /* Activity */,
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyText1,
+                              child: InkWell(
+                                onTap: () async {
+                                  await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => MyBanksWidget(),
                                     ),
-                                  ),
-                                ],
+                                  );
+                                },
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.insights,
+                                      color: FlutterFlowTheme.of(context)
+                                          .textColor,
+                                      size: 40,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 8, 0, 0),
+                                      child: Text(
+                                        FFLocalizations.of(context).getText(
+                                          '2e07yq94' /* Activity */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                             Container(
@@ -410,7 +399,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       duration: Duration(milliseconds: 0),
                                       reverseDuration:
                                           Duration(milliseconds: 0),
-                                      child: MYBanksWidget(),
+                                      child: ListNewsWidget(),
                                     ),
                                   );
                                 },
@@ -418,8 +407,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Icon(
-                                      Icons.account_balance_outlined,
+                                    FaIcon(
+                                      FontAwesomeIcons.newspaper,
                                       color: FlutterFlowTheme.of(context)
                                           .textColor,
                                       size: 40,
@@ -429,7 +418,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                           0, 8, 0, 0),
                                       child: Text(
                                         FFLocalizations.of(context).getText(
-                                          'zyh7fkl9' /* My Bank */,
+                                          'zyh7fkl9' /* News */,
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyText1,
@@ -472,7 +461,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                               child: SizedBox(
                                 width: 40,
                                 height: 40,
-                                child: SpinKitPumpingHeart(
+                                child: SpinKitDoubleBounce(
                                   color:
                                       FlutterFlowTheme.of(context).primaryColor,
                                   size: 40,
@@ -483,9 +472,10 @@ class _HomePageWidgetState extends State<HomePageWidget>
                           List<TransactionsRecord>
                               columnTransactionsRecordList = snapshot.data;
                           return SingleChildScrollView(
+                            primary: false,
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              mainAxisAlignment: MainAxisAlignment.end,
                               children: List.generate(
                                   columnTransactionsRecordList.length,
                                   (columnIndex) {
@@ -494,128 +484,145 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 return Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 5, 0, 0),
-                                  child: Container(
-                                    width: MediaQuery.of(context).size.width *
-                                        0.92,
-                                    height: 70,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .background,
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  8, 0, 0, 0),
-                                          child: Card(
-                                            clipBehavior:
-                                                Clip.antiAliasWithSaveLayer,
-                                            color: Color(0x6639D2C0),
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(40),
-                                            ),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(8, 8, 8, 8),
-                                              child: Icon(
-                                                Icons.monetization_on_rounded,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .tertiaryColor,
-                                                size: 24,
+                                  child: InkWell(
+                                    onTap: () async {
+                                      await Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              PaymentDetailsWidget(
+                                            transactionDetails:
+                                                columnTransactionsRecord
+                                                    .reference,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.92,
+                                      height: 70,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .background,
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    8, 0, 0, 0),
+                                            child: Card(
+                                              clipBehavior:
+                                                  Clip.antiAliasWithSaveLayer,
+                                              color: Color(0x6639D2C0),
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(40),
+                                              ),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(8, 8, 8, 8),
+                                                child: Icon(
+                                                  Icons.monetization_on_rounded,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .tertiaryColor,
+                                                  size: 24,
+                                                ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                        Expanded(
-                                          child: Padding(
+                                          Expanded(
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(12, 0, 0, 0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    columnTransactionsRecord
+                                                        .transactionName,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .subtitle1
+                                                        .override(
+                                                          fontFamily:
+                                                              'Lexend Deca',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .textColor,
+                                                        ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                0, 4, 0, 0),
+                                                    child: Text(
+                                                      columnTransactionsRecord
+                                                          .transactionBanco,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyText1,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                          Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    12, 0, 0, 0),
+                                                    12, 0, 12, 0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                                  CrossAxisAlignment.end,
                                               children: [
                                                 Text(
-                                                  columnTransactionsRecord
-                                                      .transactionName,
+                                                  'R\$${formatNumber(
+                                                    columnTransactionsRecord
+                                                        .transactionValor,
+                                                    formatType:
+                                                        FormatType.decimal,
+                                                    decimalType: DecimalType
+                                                        .periodDecimal,
+                                                  )}',
+                                                  textAlign: TextAlign.end,
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .subtitle1
+                                                      .subtitle2
                                                       .override(
                                                         fontFamily:
                                                             'Lexend Deca',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .textColor,
+                                                                .tertiaryColor,
                                                       ),
                                                 ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 4, 0, 0),
-                                                  child: Text(
-                                                    columnTransactionsRecord
-                                                        .transactionBanco,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyText1,
-                                                  ),
+                                                Text(
+                                                  columnTransactionsRecord
+                                                      .categoryTipo,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyText1,
                                                 ),
                                               ],
                                             ),
                                           ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  12, 0, 12, 0),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.end,
-                                            children: [
-                                              Text(
-                                                'R\$${formatNumber(
-                                                  columnTransactionsRecord
-                                                      .transactionValor,
-                                                  formatType:
-                                                      FormatType.decimal,
-                                                  decimalType:
-                                                      DecimalType.periodDecimal,
-                                                )}',
-                                                textAlign: TextAlign.end,
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .subtitle2
-                                                    .override(
-                                                      fontFamily: 'Lexend Deca',
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .tertiaryColor,
-                                                    ),
-                                              ),
-                                              Text(
-                                                columnTransactionsRecord
-                                                    .categoryTipo,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyText1,
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 );

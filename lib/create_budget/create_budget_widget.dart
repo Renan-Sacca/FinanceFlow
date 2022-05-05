@@ -19,11 +19,6 @@ class CreateBudgetWidget extends StatefulWidget {
 
 class _CreateBudgetWidgetState extends State<CreateBudgetWidget>
     with TickerProviderStateMixin {
-  TextEditingController budgetNameController;
-  TextEditingController textController1;
-  TextEditingController textController3;
-  final formKey = GlobalKey<FormState>();
-  final scaffoldKey = GlobalKey<ScaffoldState>();
   final animationsMap = {
     'textFieldOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
@@ -54,6 +49,11 @@ class _CreateBudgetWidgetState extends State<CreateBudgetWidget>
       ),
     ),
   };
+  final formKey = GlobalKey<FormState>();
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+  TextEditingController budgetNameController;
+  TextEditingController textController1;
+  TextEditingController textController3;
 
   @override
   void initState() {
@@ -199,7 +199,7 @@ class _CreateBudgetWidgetState extends State<CreateBudgetWidget>
                             style: FlutterFlowTheme.of(context).title1,
                             textAlign: TextAlign.center,
                             validator: (val) {
-                              if (val.isEmpty) {
+                              if (val == null || val.isEmpty) {
                                 return FFLocalizations.of(context).getText(
                                   'xzhemtfq' /* Please enter an amount */,
                                 );
@@ -309,7 +309,7 @@ class _CreateBudgetWidgetState extends State<CreateBudgetWidget>
                               child: SizedBox(
                                 width: 40,
                                 height: 40,
-                                child: SpinKitPumpingHeart(
+                                child: SpinKitDoubleBounce(
                                   color:
                                       FlutterFlowTheme.of(context).primaryColor,
                                   size: 40,

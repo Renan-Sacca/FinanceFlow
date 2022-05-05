@@ -3,8 +3,31 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
+const kThemeModeKey = '__theme_mode__';
+SharedPreferences _prefs;
+
 abstract class FlutterFlowTheme {
-  static FlutterFlowTheme of(BuildContext context) => LightModeTheme();
+  static Future initialize() async =>
+      _prefs = await SharedPreferences.getInstance();
+  static ThemeMode get themeMode {
+    final darkMode = _prefs?.getBool(kThemeModeKey);
+    return darkMode == null
+        ? ThemeMode.system
+        : darkMode
+            ? ThemeMode.dark
+            : ThemeMode.light;
+  }
+
+  static void saveThemeMode(ThemeMode mode) => mode == ThemeMode.system
+      ? _prefs?.remove(kThemeModeKey)
+      : _prefs?.setBool(kThemeModeKey, mode == ThemeMode.dark);
+
+  static FlutterFlowTheme of(BuildContext context) =>
+      Theme.of(context).brightness == Brightness.dark
+          ? DarkModeTheme()
+          : LightModeTheme();
 
   Color primaryColor;
   Color secondaryColor;
@@ -68,7 +91,25 @@ abstract class FlutterFlowTheme {
 
 class LightModeTheme extends FlutterFlowTheme {
   Color primaryColor = const Color(0xFF00968A);
-  Color secondaryColor = const Color(0xFFF2A384);
+  Color secondaryColor = const Color(0xFFF06A6A);
+  Color tertiaryColor = const Color(0xFF39D2C0);
+  Color alternate = const Color(0x00000000);
+  Color primaryBackground = const Color(0x00000000);
+  Color secondaryBackground = const Color(0x00000000);
+  Color primaryText = const Color(0x00000000);
+  Color secondaryText = const Color(0x00000000);
+
+  Color background = Color(0xFF1A1F24);
+  Color darkBackground = Color(0xFF111417);
+  Color textColor = Color(0xFFFFFFFF);
+  Color grayDark = Color(0xFF57636C);
+  Color grayLight = Color(0xFF8B97A2);
+  Color errorRed = Color(0xFFF06A6A);
+}
+
+class DarkModeTheme extends FlutterFlowTheme {
+  Color primaryColor = const Color(0xFF00968A);
+  Color secondaryColor = const Color(0xFFF06A6A);
   Color tertiaryColor = const Color(0xFF39D2C0);
   Color alternate = const Color(0x00000000);
   Color primaryBackground = const Color(0x00000000);

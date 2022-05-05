@@ -8,14 +8,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class MYBudgetsWidget extends StatefulWidget {
-  const MYBudgetsWidget({Key key}) : super(key: key);
+class MYBudgetsCopyWidget extends StatefulWidget {
+  const MYBudgetsCopyWidget({Key key}) : super(key: key);
 
   @override
-  _MYBudgetsWidgetState createState() => _MYBudgetsWidgetState();
+  _MYBudgetsCopyWidgetState createState() => _MYBudgetsCopyWidgetState();
 }
 
-class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
+class _MYBudgetsCopyWidgetState extends State<MYBudgetsCopyWidget>
     with TickerProviderStateMixin {
   final animationsMap = {
     'containerOnPageLoadAnimation1': AnimationInfo(
@@ -81,7 +81,7 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
         automaticallyImplyLeading: false,
         title: Text(
           FFLocalizations.of(context).getText(
-            '6v8zovsi' /* My Budget */,
+            'mo9w8rpt' /* Historic */,
           ),
           style: FlutterFlowTheme.of(context).title1,
         ),
@@ -142,7 +142,7 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                               children: [
                                 Text(
                                   FFLocalizations.of(context).getText(
-                                    'vrh3bchh' /* Income */,
+                                    'umpdsymc' /* Entry */,
                                   ),
                                   textAlign: TextAlign.start,
                                   style: FlutterFlowTheme.of(context).bodyText1,
@@ -152,7 +152,7 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                                       0, 8, 0, 12),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
-                                      '7xa17gf6' /* +$12,402 */,
+                                      'dtpd7zr8' /* +$12,402 */,
                                     ),
                                     textAlign: TextAlign.start,
                                     style: FlutterFlowTheme.of(context)
@@ -177,7 +177,7 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          '94o8lo7k' /* 4.5%  */,
+                                          'oew1yk5p' /* 4.5%  */,
                                         ),
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
@@ -220,7 +220,7 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                               children: [
                                 Text(
                                   FFLocalizations.of(context).getText(
-                                    'b8qtaqct' /* Income */,
+                                    'w886rm0p' /* Output */,
                                   ),
                                   textAlign: TextAlign.start,
                                   style: FlutterFlowTheme.of(context).bodyText1,
@@ -230,7 +230,7 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                                       0, 8, 0, 12),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
-                                      '1k5wy6wa' /* -$8,392 */,
+                                      '47jkuxaq' /* -$8,392 */,
                                     ),
                                     textAlign: TextAlign.start,
                                     style: FlutterFlowTheme.of(context)
@@ -255,7 +255,7 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                                     children: [
                                       Text(
                                         FFLocalizations.of(context).getText(
-                                          'poqkkq28' /* 4.5%  */,
+                                          'a42186nf' /* 4.5%  */,
                                         ),
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
@@ -268,7 +268,7 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                                             ),
                                       ),
                                       Icon(
-                                        Icons.trending_up_rounded,
+                                        Icons.trending_down_rounded,
                                         color: FlutterFlowTheme.of(context)
                                             .errorRed,
                                         size: 24,
@@ -297,7 +297,7 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                           child: SizedBox(
                             width: 40,
                             height: 40,
-                            child: SpinKitPumpingHeart(
+                            child: SpinKitDoubleBounce(
                               color: FlutterFlowTheme.of(context).primaryColor,
                               size: 40,
                             ),
@@ -393,7 +393,7 @@ class _MYBudgetsWidgetState extends State<MYBudgetsWidget>
                                                 child: Text(
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    'k4ttyuw3' /* Total Spent */,
+                                                    'gk2wzoli' /* Total Spent */,
                                                   ),
                                                   textAlign: TextAlign.end,
                                                   style: FlutterFlowTheme.of(

@@ -1,23 +1,22 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
-import '../budget_details/budget_details_widget.dart';
-import '../createbanco/createbanco_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
-import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../payment_details/payment_details_widget.dart';
+import '../transacao/transacao_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class MYBanksWidget extends StatefulWidget {
-  const MYBanksWidget({Key key}) : super(key: key);
+class HistoricoWidget extends StatefulWidget {
+  const HistoricoWidget({Key key}) : super(key: key);
 
   @override
-  _MYBanksWidgetState createState() => _MYBanksWidgetState();
+  _HistoricoWidgetState createState() => _HistoricoWidgetState();
 }
 
-class _MYBanksWidgetState extends State<MYBanksWidget>
+class _HistoricoWidgetState extends State<HistoricoWidget>
     with TickerProviderStateMixin {
   final animationsMap = {
     'listViewOnPageLoadAnimation': AnimationInfo(
@@ -54,23 +53,9 @@ class _MYBanksWidgetState extends State<MYBanksWidget>
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).background,
         automaticallyImplyLeading: false,
-        leading: FlutterFlowIconButton(
-          borderColor: Colors.transparent,
-          borderRadius: 30,
-          borderWidth: 1,
-          buttonSize: 60,
-          icon: Icon(
-            Icons.keyboard_return,
-            color: Colors.white,
-            size: 30,
-          ),
-          onPressed: () async {
-            Navigator.pop(context);
-          },
-        ),
         title: Text(
           FFLocalizations.of(context).getText(
-            'fr6us5wm' /* My Banks */,
+            '6v8zovsi' /* Historic */,
           ),
           style: FlutterFlowTheme.of(context).title1,
         ),
@@ -87,7 +72,7 @@ class _MYBanksWidgetState extends State<MYBanksWidget>
               type: PageTransitionType.bottomToTop,
               duration: Duration(milliseconds: 220),
               reverseDuration: Duration(milliseconds: 220),
-              child: CreatebancoWidget(),
+              child: TransacaoWidget(),
             ),
           );
         },
@@ -108,10 +93,11 @@ class _MYBanksWidgetState extends State<MYBanksWidget>
                 padding: EdgeInsets.zero,
                 scrollDirection: Axis.vertical,
                 children: [
-                  StreamBuilder<List<BancoRecord>>(
-                    stream: queryBancoRecord(
-                      queryBuilder: (bancoRecord) => bancoRecord
-                          .where('banco_user', isEqualTo: currentUserReference),
+                  StreamBuilder<List<TransactionsRecord>>(
+                    stream: queryTransactionsRecord(
+                      queryBuilder: (transactionsRecord) => transactionsRecord
+                          .where('user', isEqualTo: currentUserReference)
+                          .orderBy('transactionTime'),
                     ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
@@ -120,15 +106,16 @@ class _MYBanksWidgetState extends State<MYBanksWidget>
                           child: SizedBox(
                             width: 40,
                             height: 40,
-                            child: SpinKitPumpingHeart(
+                            child: SpinKitDoubleBounce(
                               color: FlutterFlowTheme.of(context).primaryColor,
                               size: 40,
                             ),
                           ),
                         );
                       }
-                      List<BancoRecord> listViewBancoRecordList = snapshot.data;
-                      if (listViewBancoRecordList.isEmpty) {
+                      List<TransactionsRecord> listViewTransactionsRecordList =
+                          snapshot.data;
+                      if (listViewTransactionsRecordList.isEmpty) {
                         return Center(
                           child: Image.asset(
                             'assets/images/emptyBudgets@2x.png',
@@ -141,10 +128,10 @@ class _MYBanksWidgetState extends State<MYBanksWidget>
                         padding: EdgeInsets.zero,
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
-                        itemCount: listViewBancoRecordList.length,
+                        itemCount: listViewTransactionsRecordList.length,
                         itemBuilder: (context, listViewIndex) {
-                          final listViewBancoRecord =
-                              listViewBancoRecordList[listViewIndex];
+                          final listViewTransactionsRecord =
+                              listViewTransactionsRecordList[listViewIndex];
                           return Padding(
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(16, 0, 16, 12),
@@ -153,9 +140,9 @@ class _MYBanksWidgetState extends State<MYBanksWidget>
                                 await Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => BudgetDetailsWidget(
-                                      bancoDetails:
-                                          listViewBancoRecord.reference,
+                                    builder: (context) => PaymentDetailsWidget(
+                                      transactionDetails:
+                                          listViewTransactionsRecord.reference,
                                     ),
                                   ),
                                 );
@@ -185,7 +172,8 @@ class _MYBanksWidgetState extends State<MYBanksWidget>
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              listViewBancoRecord.nome,
+                                              listViewTransactionsRecord
+                                                  .transactionName,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyText2,
@@ -201,9 +189,33 @@ class _MYBanksWidgetState extends State<MYBanksWidget>
                                         ),
                                       ),
                                       Text(
-                                        '\$${listViewBancoRecord.dinheiro.toString()}',
+                                        '\$${formatNumber(
+                                          listViewTransactionsRecord
+                                              .transactionValor,
+                                          formatType: FormatType.decimal,
+                                        )}',
                                         style:
                                             FlutterFlowTheme.of(context).title1,
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0, 4, 0, 0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              dateTimeFormat(
+                                                  'M/d h:mm a',
+                                                  listViewTransactionsRecord
+                                                      .transactionTime),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText2,
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ],
                                   ),

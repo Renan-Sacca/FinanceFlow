@@ -83,7 +83,7 @@ class _TutorialPROFILEWidgetState extends State<TutorialPROFILEWidget>
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/images/finWallet_logo_landscape.png',
+                    'assets/images/final.png',
                     width: 220,
                     height: 60,
                     fit: BoxFit.fitWidth,

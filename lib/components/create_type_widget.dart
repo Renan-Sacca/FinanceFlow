@@ -167,7 +167,7 @@ class _CreateTypeWidgetState extends State<CreateTypeWidget> {
                             child: SizedBox(
                               width: 40,
                               height: 40,
-                              child: SpinKitPumpingHeart(
+                              child: SpinKitDoubleBounce(
                                 color:
                                     FlutterFlowTheme.of(context).primaryColor,
                                 size: 40,

@@ -15,8 +15,8 @@ class ChangePasswordWidget extends StatefulWidget {
 }
 
 class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
-  TextEditingController emailAddressController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  TextEditingController emailAddressController;
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +67,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                 child: SizedBox(
                   width: 40,
                   height: 40,
-                  child: SpinKitPumpingHeart(
+                  child: SpinKitDoubleBounce(
                     color: FlutterFlowTheme.of(context).primaryColor,
                     size: 40,
                   ),
