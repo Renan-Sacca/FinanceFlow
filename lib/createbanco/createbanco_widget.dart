@@ -1,10 +1,14 @@
 import '../auth/auth_util.dart';
+import '../backend/api_requests/api_calls.dart';
 import '../backend/backend.dart';
+import '../createbanco_copy/createbanco_copy_widget.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../flutter_flow/random_data_util.dart' as random_data;
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
@@ -174,70 +178,58 @@ class _CreatebancoWidgetState extends State<CreatebancoWidget>
                           textAlign: TextAlign.start,
                         ),
                       ),
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.8,
-                        height: 100,
-                        constraints: BoxConstraints(
-                          maxWidth: MediaQuery.of(context).size.width * 0.8,
-                        ),
-                        decoration: BoxDecoration(),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                          child: TextFormField(
-                            controller: textController2,
-                            obscureText: false,
-                            decoration: InputDecoration(
-                              labelText: FFLocalizations.of(context).getText(
-                                'xeklaz4k' /* Amount */,
-                              ),
-                              labelStyle: FlutterFlowTheme.of(context)
-                                  .title1
-                                  .override(
-                                    fontFamily: 'Lexend Deca',
-                                    color:
-                                        FlutterFlowTheme.of(context).grayLight,
-                                    fontWeight: FontWeight.w300,
-                                  ),
-                              hintText: FFLocalizations.of(context).getText(
-                                'len9zpkz' /* Amount */,
-                              ),
-                              hintStyle: FlutterFlowTheme.of(context)
-                                  .title1
-                                  .override(
-                                    fontFamily: 'Lexend Deca',
-                                    color:
-                                        FlutterFlowTheme.of(context).grayLight,
-                                    fontWeight: FontWeight.w300,
-                                  ),
-                              enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color:
-                                      FlutterFlowTheme.of(context).background,
-                                  width: 2,
-                                ),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color:
-                                      FlutterFlowTheme.of(context).background,
-                                  width: 2,
-                                ),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                  20, 24, 24, 24),
-                              prefixIcon: Icon(
-                                Icons.attach_money_rounded,
-                                color: FlutterFlowTheme.of(context).textColor,
-                                size: 32,
-                              ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                        child: TextFormField(
+                          controller: textController2,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            labelText: FFLocalizations.of(context).getText(
+                              'xeklaz4k' /* Balance */,
                             ),
-                            style: FlutterFlowTheme.of(context).title1,
-                            textAlign: TextAlign.center,
-                          ).animated(
-                              [animationsMap['textFieldOnPageLoadAnimation']]),
-                        ),
+                            labelStyle: FlutterFlowTheme.of(context)
+                                .title1
+                                .override(
+                                  fontFamily: 'Lexend Deca',
+                                  color: FlutterFlowTheme.of(context).grayLight,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                            hintText: FFLocalizations.of(context).getText(
+                              'len9zpkz' /* Balance */,
+                            ),
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .title1
+                                .override(
+                                  fontFamily: 'Lexend Deca',
+                                  color: FlutterFlowTheme.of(context).grayLight,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).background,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).background,
+                                width: 2,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            contentPadding:
+                                EdgeInsetsDirectional.fromSTEB(20, 24, 24, 24),
+                            prefixIcon: Icon(
+                              Icons.attach_money_rounded,
+                              color: FlutterFlowTheme.of(context).textColor,
+                              size: 32,
+                            ),
+                          ),
+                          style: FlutterFlowTheme.of(context).title1,
+                          textAlign: TextAlign.center,
+                        ).animated(
+                            [animationsMap['textFieldOnPageLoadAnimation']]),
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
@@ -281,6 +273,16 @@ class _CreatebancoWidgetState extends State<CreatebancoWidget>
                         ),
                       ),
                       Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 100, 0),
+                        child: Text(
+                          FFLocalizations.of(context).getText(
+                            '59c2nvka' /* Pay Day */,
+                          ),
+                          textAlign: TextAlign.start,
+                          style: FlutterFlowTheme.of(context).title1,
+                        ),
+                      ),
+                      Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 8),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -288,41 +290,95 @@ class _CreatebancoWidgetState extends State<CreatebancoWidget>
                             Expanded(
                               child: Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 6, 0, 0),
+                                    EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                                 child: Text(
                                   dateTimeFormat('d/M H:mm', datePicked),
                                   style: FlutterFlowTheme.of(context).title2,
                                 ),
                               ),
                             ),
-                            InkWell(
-                              onTap: () async {
-                                await DatePicker.showDateTimePicker(
-                                  context,
-                                  showTitleActions: true,
-                                  onConfirm: (date) {
-                                    setState(() => datePicked = date);
-                                  },
-                                  currentTime: getCurrentTimestamp,
-                                  minTime: getCurrentTimestamp,
-                                  locale: LocaleType.values.firstWhere(
-                                    (l) =>
-                                        l.name ==
-                                        FFLocalizations.of(context)
-                                            .languageCode,
-                                    orElse: null,
-                                  ),
-                                );
-                              },
-                              child: Icon(
-                                Icons.calendar_today_sharp,
-                                color:
-                                    FlutterFlowTheme.of(context).tertiaryColor,
-                                size: 24,
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
+                              child: InkWell(
+                                onTap: () async {
+                                  await DatePicker.showDateTimePicker(
+                                    context,
+                                    showTitleActions: true,
+                                    onConfirm: (date) {
+                                      setState(() => datePicked = date);
+                                    },
+                                    currentTime: getCurrentTimestamp,
+                                    minTime: getCurrentTimestamp,
+                                    locale: LocaleType.values.firstWhere(
+                                      (l) =>
+                                          l.name ==
+                                          FFLocalizations.of(context)
+                                              .languageCode,
+                                      orElse: null,
+                                    ),
+                                  );
+                                },
+                                child: Icon(
+                                  Icons.calendar_today_sharp,
+                                  color: FlutterFlowTheme.of(context)
+                                      .tertiaryColor,
+                                  size: 24,
+                                ),
                               ),
                             ),
                           ],
                         ),
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(60, 70, 0, 0),
+                            child: AutoSizeText(
+                              FFLocalizations.of(context).getText(
+                                'vknt8f4f' /* Do you have a Nubank bank? Use... */,
+                              ),
+                              textAlign: TextAlign.end,
+                              style: FlutterFlowTheme.of(context).bodyText1,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(60, 0, 0, 20),
+                            child: InkWell(
+                              onTap: () async {
+                                await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        CreatebancoCopyWidget(),
+                                  ),
+                                );
+                              },
+                              child: AutoSizeText(
+                                FFLocalizations.of(context).getText(
+                                  '9abspm26' /* Click here to use */,
+                                ),
+                                textAlign: TextAlign.end,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyText1
+                                    .override(
+                                      fontFamily: 'Lexend Deca',
+                                      decoration: TextDecoration.underline,
+                                    ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -346,6 +402,9 @@ class _CreatebancoWidgetState extends State<CreatebancoWidget>
                             limite: double.parse(textController3.text),
                             dataCartao: datePicked,
                             bancoUser: currentUserReference,
+                            bancoUsers: currentUserUid,
+                            bancoIds:
+                                '${currentUserUid}${budgetNameController.text}${random_data.randomInteger(0, 1000).toString()}',
                           );
                           await BancoRecord.collection
                               .doc()
@@ -353,6 +412,9 @@ class _CreatebancoWidgetState extends State<CreatebancoWidget>
 
                           final usersUpdateData = createUsersRecordData();
                           await currentUserReference.update(usersUpdateData);
+                          await CalcularsaldoCall.call(
+                            idUsuario: currentUserUid,
+                          );
                           Navigator.pop(context);
                         },
                         text: FFLocalizations.of(context).getText(
@@ -363,7 +425,6 @@ class _CreatebancoWidgetState extends State<CreatebancoWidget>
                           height: 70,
                           color: FlutterFlowTheme.of(context).tertiaryColor,
                           textStyle: FlutterFlowTheme.of(context).title1,
-                          elevation: 3,
                           borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1,

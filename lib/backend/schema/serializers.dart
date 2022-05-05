@@ -9,6 +9,8 @@ import 'user_list_record.dart';
 import 'budget_list_record.dart';
 import 'banco_record.dart';
 import 'credito_detalhe_record.dart';
+import 'noticias_record.dart';
+import 'fatura_fixa_record.dart';
 
 import 'index.dart';
 
@@ -28,6 +30,8 @@ const kDocumentReferenceField = 'Document__Reference__Field';
   BudgetListRecord,
   BancoRecord,
   CreditoDetalheRecord,
+  NoticiasRecord,
+  FaturaFixaRecord,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..add(DocumentReferenceSerializer())

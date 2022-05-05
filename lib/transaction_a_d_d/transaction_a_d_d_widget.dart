@@ -229,7 +229,7 @@ class _TransactionADDWidgetState extends State<TransactionADDWidget>
                             textAlign: TextAlign.center,
                             keyboardType: TextInputType.number,
                             validator: (val) {
-                              if (val.isEmpty) {
+                              if (val == null || val.isEmpty) {
                                 return FFLocalizations.of(context).getText(
                                   'nx5i09t1' /* Please enter an amount */,
                                 );
@@ -288,7 +288,7 @@ class _TransactionADDWidgetState extends State<TransactionADDWidget>
                                 child: SizedBox(
                                   width: 40,
                                   height: 40,
-                                  child: SpinKitPumpingHeart(
+                                  child: SpinKitDoubleBounce(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryColor,
                                     size: 40,
@@ -407,7 +407,7 @@ class _TransactionADDWidgetState extends State<TransactionADDWidget>
                               child: SizedBox(
                                 width: 40,
                                 height: 40,
-                                child: SpinKitPumpingHeart(
+                                child: SpinKitDoubleBounce(
                                   color:
                                       FlutterFlowTheme.of(context).primaryColor,
                                   size: 40,

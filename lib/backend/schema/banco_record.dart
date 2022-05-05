@@ -27,13 +27,23 @@ abstract class BancoRecord implements Built<BancoRecord, BancoRecordBuilder> {
   DocumentReference get bancoUser;
 
   @nullable
+  @BuiltValueField(wireName: 'banco_users')
+  String get bancoUsers;
+
+  @nullable
+  @BuiltValueField(wireName: 'banco_ids')
+  String get bancoIds;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
   static void _initializeBuilder(BancoRecordBuilder builder) => builder
     ..nome = ''
     ..dinheiro = 0.0
-    ..limite = 0.0;
+    ..limite = 0.0
+    ..bancoUsers = ''
+    ..bancoIds = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('banco');
@@ -62,6 +72,8 @@ Map<String, dynamic> createBancoRecordData({
   double limite,
   DateTime dataCartao,
   DocumentReference bancoUser,
+  String bancoUsers,
+  String bancoIds,
 }) =>
     serializers.toFirestore(
         BancoRecord.serializer,
@@ -70,4 +82,6 @@ Map<String, dynamic> createBancoRecordData({
           ..dinheiro = dinheiro
           ..limite = limite
           ..dataCartao = dataCartao
-          ..bancoUser = bancoUser));
+          ..bancoUser = bancoUser
+          ..bancoUsers = bancoUsers
+          ..bancoIds = bancoIds));

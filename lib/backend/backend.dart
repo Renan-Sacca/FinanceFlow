@@ -13,6 +13,8 @@ import 'schema/user_list_record.dart';
 import 'schema/budget_list_record.dart';
 import 'schema/banco_record.dart';
 import 'schema/credito_detalhe_record.dart';
+import 'schema/noticias_record.dart';
+import 'schema/fatura_fixa_record.dart';
 import 'schema/serializers.dart';
 
 export 'dart:async' show StreamSubscription;
@@ -29,6 +31,8 @@ export 'schema/user_list_record.dart';
 export 'schema/budget_list_record.dart';
 export 'schema/banco_record.dart';
 export 'schema/credito_detalhe_record.dart';
+export 'schema/noticias_record.dart';
+export 'schema/fatura_fixa_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Stream<List<UsersRecord>> queryUsersRecord(
@@ -304,6 +308,67 @@ Future<FFFirestorePage<CreditoDetalheRecord>> queryCreditoDetalheRecordPage({
     queryCollectionPage(
       CreditoDetalheRecord.collection,
       CreditoDetalheRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query NoticiasRecords (as a Stream and as a Future).
+Stream<List<NoticiasRecord>> queryNoticiasRecord(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollection(NoticiasRecord.collection, NoticiasRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Future<List<NoticiasRecord>> queryNoticiasRecordOnce(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollectionOnce(NoticiasRecord.collection, NoticiasRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Future<FFFirestorePage<NoticiasRecord>> queryNoticiasRecordPage({
+  Query Function(Query) queryBuilder,
+  DocumentSnapshot nextPageMarker,
+  int pageSize,
+  bool isStream,
+}) =>
+    queryCollectionPage(
+      NoticiasRecord.collection,
+      NoticiasRecord.serializer,
+      queryBuilder: queryBuilder,
+      nextPageMarker: nextPageMarker,
+      pageSize: pageSize,
+      isStream: isStream,
+    );
+
+/// Functions to query FaturaFixaRecords (as a Stream and as a Future).
+Stream<List<FaturaFixaRecord>> queryFaturaFixaRecord(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollection(FaturaFixaRecord.collection, FaturaFixaRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Future<List<FaturaFixaRecord>> queryFaturaFixaRecordOnce(
+        {Query Function(Query) queryBuilder,
+        int limit = -1,
+        bool singleRecord = false}) =>
+    queryCollectionOnce(
+        FaturaFixaRecord.collection, FaturaFixaRecord.serializer,
+        queryBuilder: queryBuilder, limit: limit, singleRecord: singleRecord);
+
+Future<FFFirestorePage<FaturaFixaRecord>> queryFaturaFixaRecordPage({
+  Query Function(Query) queryBuilder,
+  DocumentSnapshot nextPageMarker,
+  int pageSize,
+  bool isStream,
+}) =>
+    queryCollectionPage(
+      FaturaFixaRecord.collection,
+      FaturaFixaRecord.serializer,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,

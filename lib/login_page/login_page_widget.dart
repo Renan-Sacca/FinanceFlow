@@ -18,10 +18,10 @@ class LoginPageWidget extends StatefulWidget {
 }
 
 class _LoginPageWidgetState extends State<LoginPageWidget> {
+  final scaffoldKey = GlobalKey<ScaffoldState>();
   TextEditingController emailAddressLoginController;
   TextEditingController passwordLoginController;
   bool passwordLoginVisibility;
-  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -406,60 +406,69 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                               children: [
                                 Align(
                                   alignment: AlignmentDirectional(0, 0),
-                                  child: FFButtonWidget(
-                                    onPressed: () async {
-                                      final user =
-                                          await signInWithGoogle(context);
-                                      if (user == null) {
-                                        return;
-                                      }
-                                      await Navigator.pushAndRemoveUntil(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => NavBarPage(
-                                              initialPage: 'homePage'),
-                                        ),
-                                        (r) => false,
-                                      );
-                                    },
-                                    text: FFLocalizations.of(context).getText(
-                                      'xt2q742w' /* Sign in with Google */,
-                                    ),
-                                    icon: Icon(
-                                      Icons.add,
-                                      color: Colors.transparent,
-                                      size: 20,
-                                    ),
-                                    options: FFButtonOptions(
-                                      width: 230,
-                                      height: 44,
-                                      color: Colors.white,
-                                      textStyle: GoogleFonts.getFont(
-                                        'Roboto',
-                                        color: Color(0xFF606060),
-                                        fontSize: 17,
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 10, 0, 0),
+                                    child: FFButtonWidget(
+                                      onPressed: () async {
+                                        final user =
+                                            await signInWithGoogle(context);
+                                        if (user == null) {
+                                          return;
+                                        }
+                                        await Navigator.pushAndRemoveUntil(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => NavBarPage(
+                                                initialPage: 'homePage'),
+                                          ),
+                                          (r) => false,
+                                        );
+                                      },
+                                      text: FFLocalizations.of(context).getText(
+                                        'xt2q742w' /* Sign in with Google */,
                                       ),
-                                      elevation: 4,
-                                      borderSide: BorderSide(
+                                      icon: Icon(
+                                        Icons.add,
                                         color: Colors.transparent,
-                                        width: 0,
+                                        size: 20,
                                       ),
-                                      borderRadius: 12,
+                                      options: FFButtonOptions(
+                                        width: 230,
+                                        height: 80,
+                                        color: Colors.white,
+                                        textStyle: GoogleFonts.getFont(
+                                          'Roboto',
+                                          color: Color(0xFF606060),
+                                          fontWeight: FontWeight.normal,
+                                          fontSize: 17,
+                                        ),
+                                        elevation: 4,
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 0,
+                                        ),
+                                        borderRadius: 12,
+                                      ),
                                     ),
                                   ),
                                 ),
                                 Align(
                                   alignment: AlignmentDirectional(-0.83, 0),
-                                  child: Container(
-                                    width: 22,
-                                    height: 22,
-                                    clipBehavior: Clip.antiAlias,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Image.network(
-                                      'https://i0.wp.com/nanophorm.com/wp-content/uploads/2018/04/google-logo-icon-PNG-Transparent-Background.png?w=1000&ssl=1',
-                                      fit: BoxFit.contain,
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 10, 0, 0),
+                                    child: Container(
+                                      width: 22,
+                                      height: 22,
+                                      clipBehavior: Clip.antiAlias,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Image.network(
+                                        'https://i0.wp.com/nanophorm.com/wp-content/uploads/2018/04/google-logo-icon-PNG-Transparent-Background.png?w=1000&ssl=1',
+                                        fit: BoxFit.contain,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -469,7 +478,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 30, 0, 0),
                         child: FlutterFlowLanguageSelector(
                           width: 200,
                           backgroundColor: Color(0xFF1A1F24),

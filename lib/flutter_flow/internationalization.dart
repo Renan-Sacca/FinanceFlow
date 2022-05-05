@@ -196,16 +196,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'ou seja, 34',
     },
     'fowmkibw': {
-      'en': 'Your Title',
-      'pt': 'Seu título',
+      'en': 'Nickname',
+      'pt': 'Apelido',
     },
     'qzt24vui': {
       'en': 'What is your position?',
       'pt': 'Qual é a sua posição?',
     },
     '9bwakmuu': {
-      'en': 'Complete Profile',
-      'pt': 'Perfil completo',
+      'en': 'Continue',
+      'pt': 'Continuar',
     },
     'tx5ztak4': {
       'en': 'Skip for Now',
@@ -255,6 +255,75 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Casa',
     },
   },
+  // historico
+  {
+    '6v8zovsi': {
+      'en': 'Historic',
+      'pt': 'Histórico',
+    },
+    'j2c6s71g': {
+      'en': '•',
+      'pt': '•',
+    },
+  },
+  // MY_profilePage
+  {
+    '9lstyllj': {
+      'en': 'My Account',
+      'pt': 'Minha conta',
+    },
+    'ahj4p50t': {
+      'en': 'Edit Profile',
+      'pt': 'Editar Perfil',
+    },
+    'n7x9mmcq': {
+      'en': 'Change Password',
+      'pt': 'Mudar senha',
+    },
+    's96hwh9o': {
+      'en': 'Tutorial',
+      'pt': 'Tutorial',
+    },
+    'wdf67kcl': {
+      'en': 'Privacy Policy',
+      'pt': 'Política de Privacidade',
+    },
+    'sfoux0ti': {
+      'en': 'Adicionar noticias',
+      'pt': 'Adicionar avisos',
+    },
+    '38nhuqxh': {
+      'en': '•',
+      'pt': '•',
+    },
+  },
+  // paymentDetails
+  {
+    'z04a4lms': {
+      'en': 'Details',
+      'pt': 'Detalhes',
+    },
+    'oe62ae6e': {
+      'en': 'Category / Type',
+      'pt': 'Categoria / Tipo',
+    },
+    'jq5q1kzh': {
+      'en': '/',
+      'pt': '/',
+    },
+    'q148cycf': {
+      'en': 'When',
+      'pt': 'Quando',
+    },
+    'ax66v5eq': {
+      'en': 'Bank',
+      'pt': 'Banco',
+    },
+    'v2zh8jou': {
+      'en': 'Home',
+      'pt': 'Casa',
+    },
+  },
   // createBudgetBegin
   {
     'av9d4ro5': {
@@ -286,223 +355,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Por favor, insira um valor',
     },
     '5i3iy8oq': {
-      'en': 'Home',
-      'pt': 'Casa',
-    },
-  },
-  // MY_Budgets
-  {
-    '6v8zovsi': {
-      'en': 'My Budget',
-      'pt': 'Meu orçamento',
-    },
-    'vrh3bchh': {
-      'en': 'Income',
-      'pt': 'Renda',
-    },
-    '7xa17gf6': {
-      'en': '+\$12,402',
-      'pt': '+\$ 12.402',
-    },
-    '94o8lo7k': {
-      'en': '4.5% ',
-      'pt': '4,5%',
-    },
-    'b8qtaqct': {
-      'en': 'Income',
-      'pt': 'Renda',
-    },
-    '1k5wy6wa': {
-      'en': '-\$8,392',
-      'pt': '-\$ 8.392',
-    },
-    'poqkkq28': {
-      'en': '4.5% ',
-      'pt': '4,5%',
-    },
-    'k4ttyuw3': {
-      'en': 'Total Spent',
-      'pt': 'Total gasto',
-    },
-    'tueqxh26': {
-      'en': 'Advertising Budget',
-      'pt': 'Orçamento publicitário',
-    },
-    'bkpku84s': {
-      'en': '\$3,000',
-      'pt': '\$ 3.000',
-    },
-    'rlhhs2pe': {
-      'en': '4 Days Left',
-      'pt': 'restam 4 dias',
-    },
-    'zfbpuuzt': {
-      'en': 'Total Spent',
-      'pt': 'Total gasto',
-    },
-    'pmyp30wp': {
-      'en': '\$2,502',
-      'pt': '\$ 2.502',
-    },
-    'exeg80ax': {
-      'en': 'Advertising Budget',
-      'pt': 'Orçamento publicitário',
-    },
-    'atxlak0g': {
-      'en': '\$3,000',
-      'pt': '\$ 3.000',
-    },
-    'mc87tlur': {
-      'en': '4 Days Left',
-      'pt': 'restam 4 dias',
-    },
-    '5nxbpg8i': {
-      'en': 'Total Spent',
-      'pt': 'Total gasto',
-    },
-    'x5n9dz4s': {
-      'en': '\$2,502',
-      'pt': '\$ 2.502',
-    },
-    'j2c6s71g': {
-      'en': '•',
-      'pt': '•',
-    },
-  },
-  // MY_profilePage
-  {
-    '9lstyllj': {
-      'en': 'My Account',
-      'pt': 'Minha conta',
-    },
-    'ahj4p50t': {
-      'en': 'Edit Profile',
-      'pt': 'Editar Perfil',
-    },
-    'n7x9mmcq': {
-      'en': 'Change Password',
-      'pt': 'Mudar senha',
-    },
-    'lt7vsj70': {
-      'en': 'Notification Settings',
-      'pt': 'Configurações de notificação',
-    },
-    's96hwh9o': {
-      'en': 'Tutorial',
-      'pt': 'Tutorial',
-    },
-    'wdf67kcl': {
-      'en': 'Privacy Policy',
-      'pt': 'Política de Privacidade',
-    },
-    '38nhuqxh': {
-      'en': '•',
-      'pt': '•',
-    },
-  },
-  // paymentDetails
-  {
-    'z04a4lms': {
-      'en': 'Details',
-      'pt': 'Detalhes',
-    },
-    'rdvnf8vn': {
-      'en': 'Amount',
-      'pt': 'Resultar',
-    },
-    'jxm10sac': {
-      'en':
-          'Convulsive disorder that does something and extra content goes here because that is where it goes okay, don’t question.',
-      'pt':
-          'Convulsive disorder that does something and extra content goes here because that is where it goes okay, don’t question.',
-    },
-    'oe62ae6e': {
-      'en': 'Vendor',
-      'pt': 'Fornecedor',
-    },
-    'q148cycf': {
-      'en': 'When',
-      'pt': 'Quando',
-    },
-    'ax66v5eq': {
-      'en': 'Reason',
-      'pt': 'Razão',
-    },
-    'epiwe0yx': {
-      'en': 'Spent by',
-      'pt': 'Gasto por',
-    },
-    'v2zh8jou': {
-      'en': 'Home',
-      'pt': 'Casa',
-    },
-  },
-  // budgetDetails
-  {
-    '9u2ediu3': {
-      'en': 'Transactions',
-      'pt': 'Transações',
-    },
-    '91a0rufy': {
-      'en': 'Income',
-      'pt': 'Renda',
-    },
-    'tdm4e07j': {
-      'en': '\$50.00',
-      'pt': '\$50.00',
-    },
-    '02gkmuw4': {
-      'en': 'Home',
-      'pt': 'Casa',
-    },
-  },
-  // transferFunds
-  {
-    'ei0zqv6k': {
-      'en': 'Transações',
-      'pt': 'Transferir fundos',
-    },
-    'szn90p63': {
-      'en': 'Create Bank',
-      'pt': 'Criar banco',
-    },
-    's2t1euqo': {
-      'en': 'Create Type',
-      'pt': 'Criar tipo',
-    },
-    'udiuxdqv': {
-      'en': 'Name Transaction ',
-      'pt': 'Valor \$',
-    },
-    '1lqyttyg': {
-      'en': 'Debito',
-      'pt': '',
-    },
-    '864b1mss': {
-      'en': 'Debito',
-      'pt': 'Débito',
-    },
-    'lc584qfk': {
-      'en': 'Credito',
-      'pt': 'Crédito',
-    },
-    '32toaa70': {
-      'en': 'Amount',
-      'pt': 'Valor \$',
-    },
-    '90dohliv': {
-      'en': 'x Times',
-      'pt': 'Valor \$',
-    },
-    '8x0lcyqd': {
-      'en': 'Send Transfer',
-      'pt': 'Enviar transferência',
-    },
-    'htyccdvp': {
-      'en': 'Tap above to complete transfer',
-      'pt': 'Toque acima para concluir a transferência',
-    },
-    'y9ilil1l': {
       'en': 'Home',
       'pt': 'Casa',
     },
@@ -617,32 +469,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // transaction_EDIT
   {
     'rzm555w5': {
-      'en': 'Edit Transaction',
-      'pt': 'Editar transação',
+      'en': 'Edit transaction amount',
+      'pt': 'Editar valor da transação',
     },
     '9nuj3w94': {
       'en': 'Amount',
       'pt': 'Resultar',
-    },
-    'oskn2d36': {
-      'en': 'Spent At',
-      'pt': 'Gasto em',
-    },
-    'pp7y5hj2': {
-      'en': 'Office Budget',
-      'pt': 'Orçamento do escritório',
-    },
-    'v7uxdrp0': {
-      'en': 'External Transfer',
-      'pt': 'Transferência externa',
-    },
-    'qrosp1oi': {
-      'en': 'ACH Payment',
-      'pt': 'Pagamento ACH',
-    },
-    'wjipoggj': {
-      'en': 'Reason',
-      'pt': 'Razão',
     },
     '8kxi3al7': {
       'en': 'Update Transaction',
@@ -887,7 +719,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'cvj0lwzq': {
       'en': 'Welcome,',
-      'pt': 'Bem vindo,',
+      'pt': 'Receber,',
     },
     '37q49pv2': {
       'en': 'Your latest updates are below.',
@@ -896,14 +728,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'yy6cr3ao': {
       'en': 'Balance',
       'pt': 'Equilíbrio',
-    },
-    'jnhvqopg': {
-      'en': '**** 0149',
-      'pt': '**** 0149',
-    },
-    'uzibwmm0': {
-      'en': '05/25',
-      'pt': '25/05',
     },
     'gee0ru2x': {
       'en': 'Quick Service',
@@ -918,8 +742,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Atividade',
     },
     'zyh7fkl9': {
-      'en': 'My Bank',
-      'pt': 'Meu banco',
+      'en': 'News',
+      'pt': 'Notícia',
     },
     '1sr28d7w': {
       'en': 'Transaction',
@@ -966,12 +790,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Nome do banco',
     },
     'xeklaz4k': {
-      'en': 'Amount',
-      'pt': 'Resultar',
+      'en': 'Balance',
+      'pt': 'Saldo',
     },
     'len9zpkz': {
-      'en': 'Amount',
-      'pt': 'Resultar',
+      'en': 'Balance',
+      'pt': 'Saldo',
     },
     'eo6i1kvm': {
       'en': 'Limit credit',
@@ -980,6 +804,18 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '4k7db47b': {
       'en': 'Description',
       'pt': 'Descrição',
+    },
+    '59c2nvka': {
+      'en': 'Pay Day',
+      'pt': 'Dia do pagamento',
+    },
+    'vknt8f4f': {
+      'en': 'Do you have a Nubank bank? Use our API',
+      'pt': 'Você tem um banco Nubank? Use nossa API',
+    },
+    '9abspm26': {
+      'en': 'Click here to use',
+      'pt': 'Clique aqui para usar',
     },
     'jpj8kio4': {
       'en': 'Create Bank',
@@ -998,15 +834,345 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Casa',
     },
   },
-  // MY_banks
+  // createbancoCopy
   {
-    'fr6us5wm': {
-      'en': 'My Banks',
-      'pt': 'Meus Bancos',
+    '7kb7ubxi': {
+      'en': 'Digite o Cpf:',
+      'pt': 'Digite o Cpf:',
     },
-    'vl1tbog1': {
+    'bbsx11rn': {
+      'en': 'CPF',
+      'pt': 'CPF',
+    },
+    'xuno7tav': {
+      'en': 'Enviar email',
+      'pt': 'Enviar e-mail',
+    },
+    'gbdcocm8': {
+      'en': 'Codigo enviado ao email:',
+      'pt': 'Código enviado por email:',
+    },
+    'ml3f2ndx': {
+      'en': 'codigo',
+      'pt': 'código',
+    },
+    't98pos1i': {
+      'en': 'Description',
+      'pt': 'Descrição',
+    },
+    'cmu5xbmg': {
+      'en': 'Complete',
+      'pt': 'Completo',
+    },
+    'tpxiwbrp': {
+      'en': 'Tap above to complete request',
+      'pt': 'Toque acima para concluir a solicitação',
+    },
+    'wnhftpiv': {
+      'en': 'Please enter an amount',
+      'pt': 'Por favor, insira um valor',
+    },
+    'w66pybzb': {
+      'en': 'Home',
+      'pt': 'Casa',
+    },
+  },
+  // MY_BudgetsCopy
+  {
+    'mo9w8rpt': {
+      'en': 'Historic',
+      'pt': 'Histórico',
+    },
+    'umpdsymc': {
+      'en': 'Entry',
+      'pt': 'Entrada',
+    },
+    'dtpd7zr8': {
+      'en': '+\$12,402',
+      'pt': '+\$ 12.402',
+    },
+    'oew1yk5p': {
+      'en': '4.5% ',
+      'pt': '4,5%',
+    },
+    'w886rm0p': {
+      'en': 'Output',
+      'pt': 'Saída',
+    },
+    '47jkuxaq': {
+      'en': '-\$8,392',
+      'pt': '-\$ 8.392',
+    },
+    'a42186nf': {
+      'en': '4.5% ',
+      'pt': '4,5%',
+    },
+    'gk2wzoli': {
+      'en': 'Total Spent',
+      'pt': 'Total gasto',
+    },
+    '8h6fmp5m': {
+      'en': 'Advertising Budget',
+      'pt': 'Orçamento publicitário',
+    },
+    'nwzk74lr': {
+      'en': '\$3,000',
+      'pt': '\$ 3.000',
+    },
+    'qqmgjq2z': {
+      'en': '4 Days Left',
+      'pt': 'restam 4 dias',
+    },
+    'lfwgqlvu': {
+      'en': 'Total Spent',
+      'pt': 'Total gasto',
+    },
+    'krl2mp4e': {
+      'en': '\$2,502',
+      'pt': '\$ 2.502',
+    },
+    'ekln0bj9': {
+      'en': 'Advertising Budget',
+      'pt': 'Orçamento publicitário',
+    },
+    'xgyqas9d': {
+      'en': '\$3,000',
+      'pt': '\$ 3.000',
+    },
+    '76qkyo8x': {
+      'en': '4 Days Left',
+      'pt': 'restam 4 dias',
+    },
+    'ibhs9u0j': {
+      'en': 'Total Spent',
+      'pt': 'Total gasto',
+    },
+    'akb8lxiu': {
+      'en': '\$2,502',
+      'pt': '\$ 2.502',
+    },
+    'lqqser6y': {
       'en': '•',
       'pt': '•',
+    },
+  },
+  // My_banks
+  {
+    'a1fcd6vq': {
+      'en': 'Meus bancos',
+      'pt': 'Meus bancos',
+    },
+    '3g3o0trz': {
+      'en': '•',
+      'pt': '•',
+    },
+  },
+  // Bancodetalhes
+  {
+    '9u2ediu3': {
+      'en': 'Transactions',
+      'pt': 'Transações',
+    },
+    '91a0rufy': {
+      'en': 'Income',
+      'pt': 'Renda',
+    },
+    'tdm4e07j': {
+      'en': '\$50.00',
+      'pt': '\$ 50,00',
+    },
+    '02gkmuw4': {
+      'en': 'Home',
+      'pt': 'Casa',
+    },
+  },
+  // createNews
+  {
+    '6jbd83hl': {
+      'en': 'Create News',
+      'pt': 'Criar notícias',
+    },
+    'wf519fgl': {
+      'en': 'Title',
+      'pt': 'Título',
+    },
+    'jn1a394u': {
+      'en': 'Content',
+      'pt': 'Contente',
+    },
+    'scwvsqee': {
+      'en': 'Description',
+      'pt': 'Descrição',
+    },
+    '6lhrqita': {
+      'en': 'Create Budget',
+      'pt': 'Criar orçamento',
+    },
+    'pmna9u3g': {
+      'en': 'Tap above to complete request',
+      'pt': 'Toque acima para concluir a solicitação',
+    },
+    'r7g9c3au': {
+      'en': 'Please enter an amount',
+      'pt': 'Por favor, insira um valor',
+    },
+    'yntzgmjz': {
+      'en': 'Home',
+      'pt': 'Casa',
+    },
+  },
+  // List_news
+  {
+    'mduwkryi': {
+      'en': 'News',
+      'pt': 'Notícia',
+    },
+    's3dhjpkv': {
+      'en': '•',
+      'pt': '•',
+    },
+  },
+  // View_News
+  {
+    't6sl6le7': {
+      'en': 'News',
+      'pt': 'Notícia',
+    },
+  },
+  // Transacao
+  {
+    'ei0zqv6k': {
+      'en': 'Transações',
+      'pt': 'Transações',
+    },
+    'szn90p63': {
+      'en': 'Create Bank',
+      'pt': 'Criar banco',
+    },
+    's2t1euqo': {
+      'en': 'Create Type',
+      'pt': 'Criar tipo',
+    },
+    'udiuxdqv': {
+      'en': 'Name Transaction ',
+      'pt': 'Transação de nome',
+    },
+    '43tbizxl': {
+      'en': '',
+      'pt': '',
+    },
+    '864b1mss': {
+      'en': 'Debito',
+      'pt': 'Débito',
+    },
+    'lc584qfk': {
+      'en': 'Credito',
+      'pt': 'Crédito',
+    },
+    '32toaa70': {
+      'en': 'Amount',
+      'pt': 'Resultar',
+    },
+    '90dohliv': {
+      'en': 'x Times',
+      'pt': 'x vezes',
+    },
+    '8x0lcyqd': {
+      'en': 'Send Transfer',
+      'pt': 'Enviar transferência',
+    },
+    'htyccdvp': {
+      'en': 'Tap above to complete transfer',
+      'pt': 'Toque acima para concluir a transferência',
+    },
+    'y9ilil1l': {
+      'en': 'Home',
+      'pt': 'Casa',
+    },
+  },
+  // faturafixa
+  {
+    'enn40kqp': {
+      'en': 'Fixed Invoices\n',
+      'pt': 'Faturas Fixas',
+    },
+    'fn4oualv': {
+      'en': '•',
+      'pt': '•',
+    },
+  },
+  // faturaedit
+  {
+    '9b8glmpl': {
+      'en': 'Edit transaction amount',
+      'pt': 'Editar valor da transação',
+    },
+    'o8xjzrnc': {
+      'en': '[Some hint text...]',
+      'pt': '[Algum texto de dica...]',
+    },
+    'w3zas4ve': {
+      'en': '[Some hint text...]',
+      'pt': '[Algum texto de dica...]',
+    },
+    '4f18bq0n': {
+      'en': 'Descontar mensalmente: ',
+      'pt': 'Descontar mensalmente:',
+    },
+    'bx2tb7ex': {
+      'en': 'Descontar valor do banco:',
+      'pt': 'Descontar valor do banco:',
+    },
+    'rweorqwc': {
+      'en': 'Descontar',
+      'pt': 'Descontar',
+    },
+    'd3w2ga6a': {
+      'en': 'Update Transaction',
+      'pt': 'Atualizar transação',
+    },
+    'rmisr033': {
+      'en': 'Tap above to save your changes.',
+      'pt': 'Toque acima para salvar suas alterações.',
+    },
+    '1evxw812': {
+      'en': 'Please enter an amount',
+      'pt': 'Por favor, insira um valor',
+    },
+    'sc5z92lz': {
+      'en': 'Home',
+      'pt': 'Casa',
+    },
+  },
+  // TransacaoFixa
+  {
+    'f8q0pq17': {
+      'en': 'Mensalidade fixa',
+      'pt': 'Mensalidade fixa',
+    },
+    '5twlxrok': {
+      'en': 'Name Transaction ',
+      'pt': 'Transação de nome',
+    },
+    'e3ts6hds': {
+      'en': 'Escolha o banco para descontar:',
+      'pt': 'Escolha o banco para descontar:',
+    },
+    '88pa0qft': {
+      'en': 'Amount',
+      'pt': 'Resultar',
+    },
+    '8ewdogqw': {
+      'en': 'Send Transfer',
+      'pt': 'Enviar transferência',
+    },
+    'bjwgtice': {
+      'en': 'Tap above to complete transfer',
+      'pt': 'Toque acima para concluir a transferência',
+    },
+    '0dmf84w5': {
+      'en': 'Home',
+      'pt': 'Casa',
     },
   },
   // bookAppointment
@@ -1201,13 +1367,36 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'g8law0hd': {
       'en': 'Type',
-      'pt': 'Reserva para',
+      'pt': 'Tipo',
     },
     'g3p2bgkv': {
       'en': 'Cancel',
       'pt': 'Cancelar',
     },
     'tlwqv8in': {
+      'en': 'Save Changes',
+      'pt': 'Salvar alterações',
+    },
+  },
+  // criar_nb
+  {
+    'iw9vb1i2': {
+      'en': 'Digite o codigo enviado ao seu email:',
+      'pt': 'Digite o código enviado ao seu email:',
+    },
+    '3pxj73yx': {
+      'en': 'Name type:',
+      'pt': 'Tipo de nome:',
+    },
+    'vfdt8577': {
+      'en': 'code',
+      'pt': 'código',
+    },
+    '2szftzgd': {
+      'en': 'Cancel',
+      'pt': 'Cancelar',
+    },
+    'rrnl13wp': {
       'en': 'Save Changes',
       'pt': 'Salvar alterações',
     },

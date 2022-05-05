@@ -10,8 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class BudgetDetailsWidget extends StatefulWidget {
-  const BudgetDetailsWidget({
+class BancodetalhesWidget extends StatefulWidget {
+  const BancodetalhesWidget({
     Key key,
     this.bancoDetails,
   }) : super(key: key);
@@ -19,10 +19,10 @@ class BudgetDetailsWidget extends StatefulWidget {
   final DocumentReference bancoDetails;
 
   @override
-  _BudgetDetailsWidgetState createState() => _BudgetDetailsWidgetState();
+  _BancodetalhesWidgetState createState() => _BancodetalhesWidgetState();
 }
 
-class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
+class _BancodetalhesWidgetState extends State<BancodetalhesWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -36,14 +36,14 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
             child: SizedBox(
               width: 40,
               height: 40,
-              child: SpinKitPumpingHeart(
+              child: SpinKitDoubleBounce(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 40,
               ),
             ),
           );
         }
-        final budgetDetailsBancoRecord = snapshot.data;
+        final bancodetalhesBancoRecord = snapshot.data;
         return Scaffold(
           key: scaffoldKey,
           appBar: AppBar(
@@ -79,7 +79,7 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                         duration: Duration(milliseconds: 220),
                         reverseDuration: Duration(milliseconds: 220),
                         child: BudgetDELETEWidget(
-                          dadoapagar: budgetDetailsBancoRecord.reference,
+                          dadoapagar: bancodetalhesBancoRecord.reference,
                         ),
                       ),
                     );
@@ -114,7 +114,7 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                                 padding:
                                     EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                                 child: Text(
-                                  budgetDetailsBancoRecord.nome,
+                                  bancodetalhesBancoRecord.nome,
                                   style: FlutterFlowTheme.of(context).title1,
                                 ),
                               ),
@@ -132,7 +132,7 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                               child: Text(
-                                '\$${budgetDetailsBancoRecord.dinheiro.toString()}',
+                                '\$${bancodetalhesBancoRecord.dinheiro.toString()}',
                                 style: FlutterFlowTheme.of(context)
                                     .title1
                                     .override(
@@ -143,14 +143,6 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                               ),
                             ),
                           ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(20, 8, 20, 0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [],
                         ),
                       ),
                     ],
@@ -193,6 +185,9 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                                 transactionsRecord
                                     .where('user',
                                         isEqualTo: currentUserReference)
+                                    .where('transaction_banco',
+                                        isEqualTo:
+                                            bancodetalhesBancoRecord.nome)
                                     .orderBy('transactionTime',
                                         descending: true),
                           ),
@@ -203,7 +198,7 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                                 child: SizedBox(
                                   width: 40,
                                   height: 40,
-                                  child: SpinKitPumpingHeart(
+                                  child: SpinKitDoubleBounce(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryColor,
                                     size: 40,
@@ -245,9 +240,6 @@ class _BudgetDetailsWidgetState extends State<BudgetDetailsWidget> {
                                             transactionDetails:
                                                 transactionListTransactionsRecord
                                                     .reference,
-                                            userSpent:
-                                                transactionListTransactionsRecord
-                                                    .user,
                                           ),
                                         ),
                                       );

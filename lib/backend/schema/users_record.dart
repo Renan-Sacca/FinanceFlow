@@ -55,6 +55,15 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
   BuiltList<DocumentReference> get trasferencia;
 
   @nullable
+  String get cpf;
+
+  @nullable
+  String get code;
+
+  @nullable
+  bool get permisao;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -69,7 +78,10 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
     ..userTitle = ''
     ..saldo = 0.0
     ..bancoUser = ListBuilder()
-    ..trasferencia = ListBuilder();
+    ..trasferencia = ListBuilder()
+    ..cpf = ''
+    ..code = ''
+    ..permisao = false;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('users');
@@ -104,6 +116,9 @@ Map<String, dynamic> createUsersRecordData({
   DateTime createdTime,
   String userTitle,
   double saldo,
+  String cpf,
+  String code,
+  bool permisao,
 }) =>
     serializers.toFirestore(
         UsersRecord.serializer,
@@ -120,4 +135,7 @@ Map<String, dynamic> createUsersRecordData({
           ..userTitle = userTitle
           ..saldo = saldo
           ..bancoUser = null
-          ..trasferencia = null));
+          ..trasferencia = null
+          ..cpf = cpf
+          ..code = code
+          ..permisao = permisao));

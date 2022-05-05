@@ -1,11 +1,11 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_animations.dart';
-import '../flutter_flow/flutter_flow_drop_down.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -25,14 +25,8 @@ class TransactionEDITWidget extends StatefulWidget {
 
 class _TransactionEDITWidgetState extends State<TransactionEDITWidget>
     with TickerProviderStateMixin {
-  String budgetValue;
-  TextEditingController spentAtController;
-  TextEditingController textController1;
-  TextEditingController reasonController;
-  final formKey = GlobalKey<FormState>();
-  final scaffoldKey = GlobalKey<ScaffoldState>();
   final animationsMap = {
-    'textFieldOnPageLoadAnimation1': AnimationInfo(
+    'textFieldOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       duration: 600,
       fadeIn: true,
@@ -45,49 +39,10 @@ class _TransactionEDITWidgetState extends State<TransactionEDITWidget>
         opacity: 1,
       ),
     ),
-    'textFieldOnPageLoadAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      delay: 170,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 80),
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        opacity: 1,
-      ),
-    ),
-    'dropDownOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      delay: 200,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 100),
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        opacity: 1,
-      ),
-    ),
-    'textFieldOnPageLoadAnimation3': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      duration: 600,
-      delay: 230,
-      fadeIn: true,
-      initialState: AnimationState(
-        offset: Offset(0, 120),
-        opacity: 0,
-      ),
-      finalState: AnimationState(
-        offset: Offset(0, 0),
-        opacity: 1,
-      ),
-    ),
   };
+  final formKey = GlobalKey<FormState>();
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+  TextEditingController textController;
 
   @override
   void initState() {
@@ -97,8 +52,6 @@ class _TransactionEDITWidgetState extends State<TransactionEDITWidget>
           .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
       this,
     );
-
-    textController1 = TextEditingController();
   }
 
   @override
@@ -112,7 +65,7 @@ class _TransactionEDITWidgetState extends State<TransactionEDITWidget>
             child: SizedBox(
               width: 40,
               height: 40,
-              child: SpinKitPumpingHeart(
+              child: SpinKitDoubleBounce(
                 color: FlutterFlowTheme.of(context).primaryColor,
                 size: 40,
               ),
@@ -122,6 +75,49 @@ class _TransactionEDITWidgetState extends State<TransactionEDITWidget>
         final transactionEDITTransactionsRecord = snapshot.data;
         return Scaffold(
           key: scaffoldKey,
+          appBar: AppBar(
+            backgroundColor: FlutterFlowTheme.of(context).primaryColor,
+            automaticallyImplyLeading: false,
+            leading: FlutterFlowIconButton(
+              borderColor: Colors.transparent,
+              borderRadius: 30,
+              borderWidth: 1,
+              buttonSize: 60,
+              icon: Icon(
+                Icons.arrow_back_rounded,
+                color: Colors.white,
+                size: 30,
+              ),
+              onPressed: () async {
+                Navigator.pop(context);
+              },
+            ),
+            actions: [
+              FlutterFlowIconButton(
+                borderColor: Colors.transparent,
+                borderRadius: 30,
+                borderWidth: 1,
+                buttonSize: 60,
+                icon: Icon(
+                  Icons.delete,
+                  color: Colors.white,
+                  size: 30,
+                ),
+                onPressed: () async {
+                  await transactionEDITTransactionsRecord.reference.delete();
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          NavBarPage(initialPage: 'historico'),
+                    ),
+                  );
+                },
+              ),
+            ],
+            centerTitle: true,
+            elevation: 2,
+          ),
           backgroundColor: FlutterFlowTheme.of(context).tertiaryColor,
           body: Form(
             key: formKey,
@@ -142,7 +138,7 @@ class _TransactionEDITWidgetState extends State<TransactionEDITWidget>
                   ),
                   child: Container(
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * 0.8,
+                    height: MediaQuery.of(context).size.height * 0.7,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).darkBackground,
                       borderRadius: BorderRadius.only(
@@ -157,267 +153,89 @@ class _TransactionEDITWidgetState extends State<TransactionEDITWidget>
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                FFLocalizations.of(context).getText(
-                                  'rzm555w5' /* Edit Transaction */,
-                                ),
-                                style: FlutterFlowTheme.of(context).title1,
-                              ),
-                              Card(
-                                clipBehavior: Clip.antiAliasWithSaveLayer,
-                                color: FlutterFlowTheme.of(context).background,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
-                                child: FlutterFlowIconButton(
-                                  borderColor: Colors.transparent,
-                                  borderRadius: 30,
-                                  buttonSize: 48,
-                                  icon: Icon(
-                                    Icons.close_rounded,
-                                    color:
-                                        FlutterFlowTheme.of(context).textColor,
-                                    size: 30,
-                                  ),
-                                  onPressed: () async {
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                              ),
-                            ],
+                          Text(
+                            FFLocalizations.of(context).getText(
+                              'rzm555w5' /* Edit transaction amount */,
+                            ),
+                            style: FlutterFlowTheme.of(context).title1,
                           ),
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                            child: TextFormField(
-                              controller: textController1,
-                              obscureText: false,
-                              decoration: InputDecoration(
-                                labelStyle: FlutterFlowTheme.of(context)
-                                    .title1
-                                    .override(
-                                      fontFamily: 'Lexend Deca',
-                                      color: FlutterFlowTheme.of(context)
-                                          .grayLight,
-                                      fontWeight: FontWeight.w300,
-                                    ),
-                                hintText: FFLocalizations.of(context).getText(
-                                  '9nuj3w94' /* Amount */,
-                                ),
-                                hintStyle: FlutterFlowTheme.of(context)
-                                    .title1
-                                    .override(
-                                      fontFamily: 'Lexend Deca',
-                                      color: FlutterFlowTheme.of(context)
-                                          .grayLight,
-                                      fontWeight: FontWeight.w300,
-                                    ),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color:
-                                        FlutterFlowTheme.of(context).background,
-                                    width: 2,
+                          Expanded(
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                              child: TextFormField(
+                                controller: textController ??=
+                                    TextEditingController(
+                                  text: formatNumber(
+                                    transactionEDITTransactionsRecord
+                                        .transactionValor,
+                                    formatType: FormatType.decimal,
+                                    decimalType: DecimalType.periodDecimal,
                                   ),
-                                  borderRadius: BorderRadius.circular(8),
                                 ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color:
-                                        FlutterFlowTheme.of(context).background,
-                                    width: 2,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                    20, 24, 24, 24),
-                                prefixIcon: Icon(
-                                  Icons.attach_money_rounded,
-                                  color: FlutterFlowTheme.of(context).textColor,
-                                  size: 32,
-                                ),
-                              ),
-                              style: FlutterFlowTheme.of(context).title1,
-                              textAlign: TextAlign.center,
-                              keyboardType: TextInputType.number,
-                              validator: (val) {
-                                if (val.isEmpty) {
-                                  return FFLocalizations.of(context).getText(
-                                    '4zekl2i9' /* Please enter an amount */,
-                                  );
-                                }
-
-                                return null;
-                              },
-                            ).animated([
-                              animationsMap['textFieldOnPageLoadAnimation1']
-                            ]),
-                          ),
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                            child: TextFormField(
-                              controller: spentAtController ??=
-                                  TextEditingController(
-                                text: transactionEDITTransactionsRecord
-                                    .transactionName,
-                              ),
-                              obscureText: false,
-                              decoration: InputDecoration(
-                                labelText: FFLocalizations.of(context).getText(
-                                  'oskn2d36' /* Spent At */,
-                                ),
-                                labelStyle:
-                                    FlutterFlowTheme.of(context).bodyText1,
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color:
-                                        FlutterFlowTheme.of(context).background,
-                                    width: 2,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color:
-                                        FlutterFlowTheme.of(context).background,
-                                    width: 2,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                    20, 24, 24, 24),
-                              ),
-                              style: FlutterFlowTheme.of(context).bodyText2,
-                            ).animated([
-                              animationsMap['textFieldOnPageLoadAnimation2']
-                            ]),
-                          ),
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                            child: StreamBuilder<List<BudgetListRecord>>(
-                              stream: queryBudgetListRecord(
-                                queryBuilder: (budgetListRecord) =>
-                                    budgetListRecord.where('budgetUser',
-                                        isEqualTo: currentUserReference),
-                                singleRecord: true,
-                              ),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 40,
-                                      height: 40,
-                                      child: SpinKitPumpingHeart(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryColor,
-                                        size: 40,
-                                      ),
-                                    ),
-                                  );
-                                }
-                                List<BudgetListRecord>
-                                    budgetBudgetListRecordList = snapshot.data;
-                                // Return an empty Container when the document does not exist.
-                                if (snapshot.data.isEmpty) {
-                                  return Container();
-                                }
-                                final budgetBudgetListRecord =
-                                    budgetBudgetListRecordList.isNotEmpty
-                                        ? budgetBudgetListRecordList.first
-                                        : null;
-                                return FlutterFlowDropDown(
-                                  options: budgetBudgetListRecord.budget
-                                      .toList()
-                                      .toList(),
-                                  onChanged: (val) =>
-                                      setState(() => budgetValue = val),
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.9,
-                                  height: 60,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .bodyText1
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelStyle: FlutterFlowTheme.of(context)
+                                      .title1
                                       .override(
                                         fontFamily: 'Lexend Deca',
                                         color: FlutterFlowTheme.of(context)
-                                            .textColor,
+                                            .grayLight,
+                                        fontWeight: FontWeight.w300,
                                       ),
-                                  icon: Icon(
-                                    Icons.keyboard_arrow_down_rounded,
-                                    color:
-                                        FlutterFlowTheme.of(context).grayLight,
-                                    size: 15,
+                                  hintText: FFLocalizations.of(context).getText(
+                                    '9nuj3w94' /* Amount */,
                                   ),
-                                  fillColor: FlutterFlowTheme.of(context)
-                                      .darkBackground,
-                                  elevation: 2,
-                                  borderColor:
-                                      FlutterFlowTheme.of(context).background,
-                                  borderWidth: 2,
-                                  borderRadius: 8,
-                                  margin: EdgeInsetsDirectional.fromSTEB(
-                                      20, 20, 12, 20),
-                                  hidesUnderline: true,
-                                ).animated([
-                                  animationsMap['dropDownOnPageLoadAnimation']
-                                ]);
-                              },
-                            ),
-                          ),
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                            child: TextFormField(
-                              controller: reasonController ??=
-                                  TextEditingController(
-                                text: transactionEDITTransactionsRecord
-                                    .transactionReason,
-                              ),
-                              obscureText: false,
-                              decoration: InputDecoration(
-                                labelStyle:
-                                    FlutterFlowTheme.of(context).bodyText1,
-                                hintText: FFLocalizations.of(context).getText(
-                                  'wjipoggj' /* Reason */,
-                                ),
-                                hintStyle:
-                                    FlutterFlowTheme.of(context).bodyText1,
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color:
-                                        FlutterFlowTheme.of(context).background,
-                                    width: 2,
+                                  hintStyle: FlutterFlowTheme.of(context)
+                                      .title1
+                                      .override(
+                                        fontFamily: 'Lexend Deca',
+                                        color: FlutterFlowTheme.of(context)
+                                            .grayLight,
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context)
+                                          .background,
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
                                   ),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color:
-                                        FlutterFlowTheme.of(context).background,
-                                    width: 2,
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context)
+                                          .background,
+                                      width: 2,
+                                    ),
+                                    borderRadius: BorderRadius.circular(8),
                                   ),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                    20, 40, 24, 0),
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyText1
-                                  .override(
-                                    fontFamily: 'Lexend Deca',
+                                  contentPadding:
+                                      EdgeInsetsDirectional.fromSTEB(
+                                          20, 24, 24, 24),
+                                  prefixIcon: Icon(
+                                    Icons.attach_money_rounded,
                                     color:
                                         FlutterFlowTheme.of(context).textColor,
+                                    size: 32,
                                   ),
-                              textAlign: TextAlign.start,
-                              maxLines: 4,
-                            ).animated([
-                              animationsMap['textFieldOnPageLoadAnimation3']
-                            ]),
+                                ),
+                                style: FlutterFlowTheme.of(context).title1,
+                                textAlign: TextAlign.center,
+                                keyboardType: TextInputType.number,
+                                validator: (val) {
+                                  if (val == null || val.isEmpty) {
+                                    return FFLocalizations.of(context).getText(
+                                      '4zekl2i9' /* Please enter an amount */,
+                                    );
+                                  }
+
+                                  return null;
+                                },
+                              ).animated([
+                                animationsMap['textFieldOnPageLoadAnimation']
+                              ]),
+                            ),
                           ),
                         ],
                       ),
@@ -433,70 +251,32 @@ class _TransactionEDITWidgetState extends State<TransactionEDITWidget>
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          StreamBuilder<List<BudgetsRecord>>(
-                            stream: queryBudgetsRecord(
-                              queryBuilder: (budgetsRecord) => budgetsRecord
-                                  .where('budetName', isEqualTo: budgetValue),
-                              singleRecord: true,
-                            ),
-                            builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
-                              if (!snapshot.hasData) {
-                                return Center(
-                                  child: SizedBox(
-                                    width: 40,
-                                    height: 40,
-                                    child: SpinKitPumpingHeart(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryColor,
-                                      size: 40,
-                                    ),
-                                  ),
-                                );
-                              }
-                              List<BudgetsRecord> buttonBudgetsRecordList =
-                                  snapshot.data;
-                              // Return an empty Container when the document does not exist.
-                              if (snapshot.data.isEmpty) {
-                                return Container();
-                              }
-                              final buttonBudgetsRecord =
-                                  buttonBudgetsRecordList.isNotEmpty
-                                      ? buttonBudgetsRecordList.first
-                                      : null;
-                              return FFButtonWidget(
-                                onPressed: () async {
-                                  final transactionsUpdateData =
-                                      createTransactionsRecordData(
-                                    transactionName:
-                                        spentAtController?.text ?? '',
-                                    transactionReason:
-                                        reasonController?.text ?? '',
-                                  );
-                                  await transactionEDITTransactionsRecord
-                                      .reference
-                                      .update(transactionsUpdateData);
-                                  Navigator.pop(context);
-                                },
-                                text: FFLocalizations.of(context).getText(
-                                  '8kxi3al7' /* Update Transaction */,
-                                ),
-                                options: FFButtonOptions(
-                                  width: 340,
-                                  height: 70,
-                                  color: FlutterFlowTheme.of(context)
-                                      .tertiaryColor,
-                                  textStyle:
-                                      FlutterFlowTheme.of(context).title1,
-                                  elevation: 0,
-                                  borderSide: BorderSide(
-                                    color: Colors.transparent,
-                                    width: 1,
-                                  ),
-                                  borderRadius: 12,
-                                ),
+                          FFButtonWidget(
+                            onPressed: () async {
+                              final transactionsUpdateData =
+                                  createTransactionsRecordData(
+                                transactionValor:
+                                    double.parse(textController?.text ?? ''),
                               );
+                              await transactionEDITTransactionsRecord.reference
+                                  .update(transactionsUpdateData);
+                              Navigator.pop(context);
                             },
+                            text: FFLocalizations.of(context).getText(
+                              '8kxi3al7' /* Update Transaction */,
+                            ),
+                            options: FFButtonOptions(
+                              width: 340,
+                              height: 70,
+                              color: FlutterFlowTheme.of(context).tertiaryColor,
+                              textStyle: FlutterFlowTheme.of(context).title1,
+                              elevation: 0,
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1,
+                              ),
+                              borderRadius: 12,
+                            ),
                           ),
                         ],
                       ),
